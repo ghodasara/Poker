@@ -1,0 +1,4 @@
+[package]
+name = "Poker"
+version = "0.1.0"
+authors = ["Satyam Ghodasara <sghodas@gmail.com>"]
