@@ -1,5 +1,7 @@
 use card;
 
+mod tests;
+
 pub struct Hand {
     pub cards: Vec<card::Card>
 }
