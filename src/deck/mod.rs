@@ -5,12 +5,10 @@ use card;
 
 mod tests;
 
-#[allow(dead_code)]
 pub struct Deck {
     pub cards: Vec<card::Card>
 }
 
-#[allow(dead_code)]
 impl Deck {
     pub fn new() -> Deck {
         let mut cards: Vec<card::Card> = vec![];
