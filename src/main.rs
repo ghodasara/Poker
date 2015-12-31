@@ -4,5 +4,5 @@ use poker::deck;
 
 fn main() {
     let deck = deck::Deck::new();
-    println!("{}", deck.cards[0].suit);
+    println!("{}", deck.cards[0]);
 }

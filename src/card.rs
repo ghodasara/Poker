@@ -5,6 +5,12 @@ pub struct Card {
     pub suit: Suit
 }
 
+impl fmt::Display for Card {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}{}", self.value, self.suit)
+    }
+}
+
 pub enum Value {
     None    =   0,
     Two     =   2,
