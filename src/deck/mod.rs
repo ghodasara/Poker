@@ -52,8 +52,12 @@ impl Deck {
         }
     }
 
-    pub fn draw(&mut self) -> card::Card {
-        let idx = self.cards.len() - 1;
-        self.cards.remove(idx)
+    pub fn draw(&mut self) -> Option<card::Card> {
+        let len = self.cards.len();
+        if len == 0 {
+            None
+        } else {
+            Some(self.cards.remove(len - 1))
+        }
     }
 }
