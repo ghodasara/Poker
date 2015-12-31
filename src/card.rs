@@ -1,5 +1,6 @@
-use std::fmt;
+use std::{fmt, cmp};
 
+#[derive(Debug, PartialEq)]
 pub struct Card {
     pub value: Value,
     pub suit: Suit
@@ -11,7 +12,13 @@ impl fmt::Display for Card {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+impl cmp::PartialOrd for Card {
+    fn partial_cmp(&self, other: &Card) -> Option<cmp::Ordering> {
+        self.value.partial_cmp(&other.value)
+    }
+}
+
+#[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
 pub enum Value {
     None    =   0,
     Two     =   2,
