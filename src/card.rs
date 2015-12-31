@@ -11,6 +11,7 @@ impl fmt::Display for Card {
     }
 }
 
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Value {
     None    =   0,
     Two     =   2,
@@ -50,6 +51,7 @@ impl fmt::Display for Value {
     }
 }
 
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Suit {
     None,
     Diamonds,
