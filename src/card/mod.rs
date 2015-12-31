@@ -1,5 +1,7 @@
 use std::{fmt, cmp};
 
+mod tests;
+
 #[derive(Debug, PartialEq)]
 pub struct Card {
     pub value: Value,
