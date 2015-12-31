@@ -1,8 +1,13 @@
 extern crate poker;
 
-use poker::deck;
+use poker::{deck, hand, card};
 
 fn main() {
-    let deck = deck::Deck::new();
-    println!("{}", deck.cards[0]);
+    let mut deck = deck::Deck::new();
+    let mut cards: Vec<card::Card> = vec![];
+    for _i in 0..5 {
+        cards.push(deck.draw().unwrap());
+    }
+    let hand = hand::Hand::new(cards);
+    println!("{}", hand);
 }
