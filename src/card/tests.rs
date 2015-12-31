@@ -1,3 +1,5 @@
+use std::cmp;
+
 #[test]
 fn card_cmp_less() {
     let lesser = ::card::Card {
