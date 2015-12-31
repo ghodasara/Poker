@@ -17,11 +17,11 @@ impl Hand {
 
 impl fmt::Display for Hand {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}{}{}{}{}", self.cards.get(0).unwrap(),
-                                self.cards.get(1).unwrap(),
-                                self.cards.get(2).unwrap(),
-                                self.cards.get(3).unwrap(),
-                                self.cards.get(4).unwrap())
+        write!(f, "{} {} {} {} {}", self.cards.get(0).unwrap(),
+                                    self.cards.get(1).unwrap(),
+                                    self.cards.get(2).unwrap(),
+                                    self.cards.get(3).unwrap(),
+                                    self.cards.get(4).unwrap())
     }
 }
 
