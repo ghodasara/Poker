@@ -51,4 +51,9 @@ impl Deck {
             cards: cards
         }
     }
+
+    pub fn draw(&mut self) -> card::Card {
+        let idx = self.cards.len() - 1;
+        self.cards.remove(idx)
+    }
 }
