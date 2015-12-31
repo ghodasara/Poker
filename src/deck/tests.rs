@@ -1,12 +1,12 @@
 #[test]
 fn num_cards() {
-    let deck = super::Deck::new();
+    let deck = deck::Deck::new();
     assert_eq!(deck.cards.len(), 52);
 }
 
 #[test]
 fn draw_one_card() {
-    let mut deck = super::Deck::new();
+    let mut deck = deck::Deck::new();
     let top_card_value = deck.cards.get(51).unwrap().value.clone();
     let top_card_suit = deck.cards.get(51).unwrap().suit.clone();
     let card = deck.draw().unwrap();
@@ -21,7 +21,7 @@ fn draw_one_card() {
 
 #[test]
 fn draw_too_many_cards() {
-    let mut deck = super::Deck::new();
+    let mut deck = deck::Deck::new();
     for i in 0..53 {
         let exists = match deck.draw() {
             None    => false,
