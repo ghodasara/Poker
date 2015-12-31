@@ -5,7 +5,7 @@ fn num_cards() {
 }
 
 #[test]
-fn draw_one_card() {
+fn draw_card() {
     let mut deck = deck::Deck::new();
     let top_card_value = deck.cards.get(51).unwrap().value.clone();
     let top_card_suit = deck.cards.get(51).unwrap().suit.clone();
