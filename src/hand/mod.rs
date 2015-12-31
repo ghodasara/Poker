@@ -8,10 +8,21 @@ pub struct Hand {
 }
 
 impl Hand {
-    pub fn new(cards: Vec<card::Card>) -> Hand {
+    pub fn new(mut cards: Vec<card::Card>) -> Hand {
+        cards.sort();
         Hand {
             cards: cards
         }
+    }
+
+    pub fn has_flush(&self) -> bool {
+        let suit: card::Suit = self.cards.get(0).unwrap().suit.clone();
+        for card in &self.cards {
+            if card.suit != suit {
+                return false
+            }
+        }
+        true
     }
 }
 
