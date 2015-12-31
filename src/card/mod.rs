@@ -14,13 +14,21 @@ impl fmt::Display for Card {
     }
 }
 
+impl cmp::Ord for Card {
+    fn cmp(&self, other: &Card) -> cmp::Ordering {
+        self.value.cmp(&other.value)
+    }
+}
+
+impl cmp::Eq for Card { }
+
 impl cmp::PartialOrd for Card {
     fn partial_cmp(&self, other: &Card) -> Option<cmp::Ordering> {
         self.value.partial_cmp(&other.value)
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
+#[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub enum Value {
     None    =   0,
     Two     =   2,
