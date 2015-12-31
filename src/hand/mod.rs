@@ -13,3 +13,16 @@ impl Hand {
         }
     }
 }
+
+#[derive(Debug, PartialEq)]
+pub enum PokerHand {
+    HighCard      = 0,
+    OnePair       = 1,
+    TwoPair       = 2,
+    Trips         = 3,
+    Straight      = 4,
+    Flush         = 5,
+    FullHouse     = 6,
+    Quads         = 7,
+    StraightFlush = 8,
+}
