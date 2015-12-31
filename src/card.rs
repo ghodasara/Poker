@@ -63,10 +63,10 @@ pub enum Suit {
 impl fmt::Display for Suit {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let suit = match *self {
-            Suit::Diamonds  =>  "D",
-            Suit::Clubs     =>  "C",
-            Suit::Hearts    =>  "H",
-            Suit::Spades    =>  "S",
+            Suit::Diamonds  =>  "♢",
+            Suit::Clubs     =>  "♣",
+            Suit::Hearts    =>  "♡",
+            Suit::Spades    =>  "♠",
             Suit::None      =>  "-"
         };
         write!(f, "{}", suit)
