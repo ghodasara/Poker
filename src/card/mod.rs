@@ -40,6 +40,7 @@ impl Card {
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub enum Value {
     None    =   0,
+    AceLow  =   1,
     Two     =   2,
     Three   =   3,
     Four    =   4,
@@ -58,6 +59,7 @@ pub enum Value {
 impl fmt::Display for Value {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let value = match *self {
+            Value::AceLow   =>  "1",
             Value::Two      =>  "2",
             Value::Three    =>  "3",
             Value::Four     =>  "4",
