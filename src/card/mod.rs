@@ -28,6 +28,15 @@ impl cmp::PartialOrd for Card {
     }
 }
 
+impl Card {
+    pub fn new(value: Value, suit: Suit) -> Card {
+        Card {
+            value: value,
+            suit: suit
+        }
+    }
+}
+
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub enum Value {
     None    =   0,
