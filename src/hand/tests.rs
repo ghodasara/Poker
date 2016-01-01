@@ -40,10 +40,17 @@ fn no_flush() {
 }
 
 #[test]
-fn compare_unequal_poker_hands() {
+fn compare_lesser_poker_hand() {
     assert_eq!(hand::PokerRanking::HighCard < hand::PokerRanking::OnePair, true);
     assert_eq!(hand::PokerRanking::HighCard == hand::PokerRanking::OnePair, false);
     assert_eq!(hand::PokerRanking::HighCard > hand::PokerRanking::OnePair, false);
+}
+
+#[test]
+fn compare_greater_poker_hand() {
+    assert_eq!(hand::PokerRanking::Flush < hand::PokerRanking::TwoPair, false);
+    assert_eq!(hand::PokerRanking::Flush == hand::PokerRanking::TwoPair, false);
+    assert_eq!(hand::PokerRanking::Flush > hand::PokerRanking::TwoPair, true);
 }
 
 #[test]
