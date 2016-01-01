@@ -40,7 +40,7 @@ impl fmt::Display for Hand {
 pub enum PokerHand {
     HighCard((card::Card)),
     OnePair((card::Card, card::Card)),
-    TwoPair((card::Card, card::Card), (card::Card)),
+    TwoPair((card::Card, card::Card), (card::Card, card::Card)),
     Trips((card::Card, card::Card, card::Card)),
     Straight((card::Card, card::Card, card::Card, card::Card, card::Card)),
     Flush((card::Card, card::Card, card::Card, card::Card, card::Card)),
