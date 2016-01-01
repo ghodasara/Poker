@@ -38,13 +38,29 @@ impl fmt::Display for Hand {
 
 #[derive(Debug, PartialEq)]
 pub enum PokerHand {
-    HighCard      = 0,
-    OnePair       = 1,
-    TwoPair       = 2,
-    Trips         = 3,
-    Straight      = 4,
-    Flush         = 5,
-    FullHouse     = 6,
-    Quads         = 7,
-    StraightFlush = 8,
+    HighCard((card::Card)),
+    OnePair((card::Card, card::Card)),
+    TwoPair((card::Card, card::Card), (card::Card)),
+    Trips((card::Card, card::Card, card::Card)),
+    Straight((card::Card, card::Card, card::Card, card::Card, card::Card)),
+    Flush((card::Card, card::Card, card::Card, card::Card, card::Card)),
+    FullHouse((card::Card, card::Card, card::Card), (card::Card, card::Card)),
+    Quads((card::Card, card::Card, card::Card, card::Card)),
+    StraightFlush((card::Card, card::Card, card::Card, card::Card, card::Card)),
+}
+
+impl PokerHand {
+    fn raw_value(&self) -> u32 {
+        match *self {
+            PokerHand::HighCard(_) => 0,
+            PokerHand::OnePair(_) => 1,
+            PokerHand::TwoPair(_, _) => 2,
+            PokerHand::Trips(_) => 3,
+            PokerHand::Straight(_) => 4,
+            PokerHand::Flush(_) => 5,
+            PokerHand::FullHouse(_, _) => 6,
+            PokerHand::Quads(_) => 7,
+            PokerHand::StraightFlush(_) => 8,
+        }
+    }
 }
