@@ -3,27 +3,39 @@ use std::fmt;
 
 mod tests;
 
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Hand {
-    pub cards: Vec<card::Card>
+    pub cards: Vec<card::Card>,
+    //pub ranking: PokerRanking
 }
 
 impl Hand {
     pub fn new(mut cards: Vec<card::Card>) -> Hand {
         cards.sort();
         Hand {
-            cards: cards
+            cards: cards,
+
         }
     }
 
-    pub fn has_flush(&self) -> bool {
-        let suit: card::Suit = self.cards.get(0).unwrap().suit.clone();
+    fn has_flush(&self) -> bool {
+        let mut suits = 0b0000;
         for card in &self.cards {
-            if card.suit != suit {
-                return false
-            }
+            suits = suits | (0b0001 << card.suit as u32);
         }
-        true
+        println!("{}", suits);
+        match suits {
+            0b0001 => true,
+            0b0010 => true,
+            0b0100 => true,
+            0b1000 => true,
+            _ => false
+        }
     }
+
+    // fn has_straight(&self) -> bool {
+    //
+    // }
 }
 
 impl fmt::Display for Hand {
@@ -36,31 +48,15 @@ impl fmt::Display for Hand {
     }
 }
 
-#[derive(Debug, PartialEq)]
-pub enum PokerHand {
-    HighCard((card::Card)),
-    OnePair((card::Card, card::Card)),
-    TwoPair((card::Card, card::Card), (card::Card, card::Card)),
-    Trips((card::Card, card::Card, card::Card)),
-    Straight((card::Card, card::Card, card::Card, card::Card, card::Card)),
-    Flush((card::Card, card::Card, card::Card, card::Card, card::Card)),
-    FullHouse((card::Card, card::Card, card::Card), (card::Card, card::Card)),
-    Quads((card::Card, card::Card, card::Card, card::Card)),
-    StraightFlush((card::Card, card::Card, card::Card, card::Card, card::Card)),
-}
-
-impl PokerHand {
-    fn raw_value(&self) -> u32 {
-        match *self {
-            PokerHand::HighCard(_) => 0,
-            PokerHand::OnePair(_) => 1,
-            PokerHand::TwoPair(_, _) => 2,
-            PokerHand::Trips(_) => 3,
-            PokerHand::Straight(_) => 4,
-            PokerHand::Flush(_) => 5,
-            PokerHand::FullHouse(_, _) => 6,
-            PokerHand::Quads(_) => 7,
-            PokerHand::StraightFlush(_) => 8,
-        }
-    }
+#[derive(Debug, PartialEq, PartialOrd, Eq, Ord)]
+pub enum PokerRanking {
+    HighCard,
+    OnePair,
+    TwoPair,
+    Trips,
+    Straight,
+    Flush,
+    FullHouse,
+    Quads,
+    StraightFlush,
 }
