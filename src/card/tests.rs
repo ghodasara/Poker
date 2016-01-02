@@ -61,7 +61,7 @@ fn card_id() {
         rank: card::Rank::Two,
         suit: card::Suit::Spades
     };
-    let id: i64 = 39;
+    let id: i64 = 0b0000000000001000000000000000000000000000000000000000;
 
     assert_eq!(two_spades.get_id(), id);
 }
