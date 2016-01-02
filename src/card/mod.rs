@@ -39,7 +39,6 @@ impl Card {
 
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub enum Rank {
-    None    =   0,
     Two     =   2,
     Three   =   3,
     Four    =   4,
@@ -70,8 +69,7 @@ impl fmt::Display for Rank {
             Rank::Jack     =>  "J",
             Rank::Queen    =>  "Q",
             Rank::King     =>  "K",
-            Rank::Ace      =>  "A",
-            Rank::None     =>  "-"
+            Rank::Ace      =>  "A"
         };
         write!(f, "{}", value)
     }
@@ -79,7 +77,6 @@ impl fmt::Display for Rank {
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Suit {
-    None,
     Diamonds,
     Clubs,
     Hearts,
@@ -92,8 +89,7 @@ impl fmt::Display for Suit {
             Suit::Diamonds  =>  "♢",
             Suit::Clubs     =>  "♣",
             Suit::Hearts    =>  "♡",
-            Suit::Spades    =>  "♠",
-            Suit::None      =>  "-"
+            Suit::Spades    =>  "♠"
         };
         write!(f, "{}", suit)
     }

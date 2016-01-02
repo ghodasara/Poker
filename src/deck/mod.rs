@@ -29,14 +29,14 @@ impl Deck {
                     10  =>  card::Rank::Queen,
                     11  =>  card::Rank::King,
                     12  =>  card::Rank::Ace,
-                    _   =>  card::Rank::None
+                    _   =>  card::Rank::Ace,
                 };
                 let suit = match suit {
                     0   =>  card::Suit::Diamonds,
                     1   =>  card::Suit::Clubs,
                     2   =>  card::Suit::Hearts,
                     3   =>  card::Suit::Spades,
-                    _   =>  card::Suit::None
+                    _   =>  card::Suit::Spades
                 };
                 cards.push(card::Card {
                     rank: rank,

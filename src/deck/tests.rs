@@ -12,9 +12,6 @@ fn draw_card() {
     let card = deck.draw().unwrap();
     assert_eq!(deck.cards.len(), 51);
 
-    assert!(card.rank != ::card::Rank::None);
-    assert!(card.suit != ::card::Suit::None);
-
     assert_eq!(card.rank, top_card_rank);
     assert_eq!(card.suit, top_card_suit);
 }
