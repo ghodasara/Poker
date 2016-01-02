@@ -40,22 +40,46 @@ fn no_flush() {
 }
 
 #[test]
-fn compare_lesser_poker_hand() {
-    assert_eq!(hand::PokerRanking::HighCard < hand::PokerRanking::OnePair, true);
-    assert_eq!(hand::PokerRanking::HighCard == hand::PokerRanking::OnePair, false);
-    assert_eq!(hand::PokerRanking::HighCard > hand::PokerRanking::OnePair, false);
+fn high_card_raw_value() {
+    assert_eq!(hand::PokerRanking::HighCard as u32, 0);
 }
 
 #[test]
-fn compare_greater_poker_hand() {
-    assert_eq!(hand::PokerRanking::Flush < hand::PokerRanking::TwoPair, false);
-    assert_eq!(hand::PokerRanking::Flush == hand::PokerRanking::TwoPair, false);
-    assert_eq!(hand::PokerRanking::Flush > hand::PokerRanking::TwoPair, true);
+fn one_pair_raw_value() {
+    assert_eq!(hand::PokerRanking::OnePair as u32, 1);
 }
 
 #[test]
-fn compare_equal_poker_hands() {
-    assert_eq!(hand::PokerRanking::Trips < hand::PokerRanking::Trips, false);
-    assert_eq!(hand::PokerRanking::Trips == hand::PokerRanking::Trips, true);
-    assert_eq!(hand::PokerRanking::Trips > hand::PokerRanking::Trips, false);
+fn two_pair_raw_value() {
+    assert_eq!(hand::PokerRanking::TwoPair as u32, 2);
+}
+
+#[test]
+fn trips_raw_value() {
+    assert_eq!(hand::PokerRanking::Trips as u32, 3);
+}
+
+#[test]
+fn straight_raw_value() {
+    assert_eq!(hand::PokerRanking::Straight as u32, 4);
+}
+
+#[test]
+fn flush_raw_value() {
+    assert_eq!(hand::PokerRanking::Flush as u32, 5);
+}
+
+#[test]
+fn full_house_raw_value() {
+    assert_eq!(hand::PokerRanking::FullHouse as u32, 6);
+}
+
+#[test]
+fn quads_raw_value() {
+    assert_eq!(hand::PokerRanking::Quads as u32, 7);
+}
+
+#[test]
+fn straight_flush_raw_value() {
+    assert_eq!(hand::PokerRanking::StraightFlush as u32, 8);
 }
