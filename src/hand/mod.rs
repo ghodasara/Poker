@@ -38,9 +38,10 @@ impl Hand {
             ranks = ranks | (0b1 << card.rank as u32);
         }
 
-        let matcher = 0b11111;
+        let straight_matcher = 0b11111;
+        let ace_low_matcher = 0b1000000001111;
         for i in 0..8 {
-            if ranks ^ (matcher << i) == 0 {
+            if ranks ^ (straight_matcher << i) == 0 || ranks ^ ace_low_matcher == 0 {
                 return true;
             }
         }

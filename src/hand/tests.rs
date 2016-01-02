@@ -53,6 +53,19 @@ fn has_straight() {
 }
 
 #[test]
+fn has_ace_low_straight() {
+    let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Two, card::Suit::Diamonds);
+    let c = card::Card::new(card::Rank::Four, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Ace, card::Suit::Clubs);
+    let e = card::Card::new(card::Rank::Five, card::Suit::Spades);
+    let cards: Vec<card::Card> = vec![a, b, c, d, e];
+    let hand: hand::Hand = hand::Hand::new(cards);
+
+    assert_eq!(hand.has_straight(), true);
+}
+
+#[test]
 fn no_straight() {
     let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
     let b = card::Card::new(card::Rank::Six, card::Suit::Diamonds);
