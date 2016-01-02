@@ -13,23 +13,23 @@ impl Deck {
     pub fn new() -> Deck {
         let mut cards: Vec<card::Card> = vec![];
 
-        for value in 0..13 {
+        for rank in 0..13 {
             for suit in 0..4 {
-                let value = match value {
-                    0   =>  card::Value::Two,
-                    1   =>  card::Value::Three,
-                    2   =>  card::Value::Four,
-                    3   =>  card::Value::Five,
-                    4   =>  card::Value::Six,
-                    5   =>  card::Value::Seven,
-                    6   =>  card::Value::Eight,
-                    7   =>  card::Value::Nine,
-                    8   =>  card::Value::Ten,
-                    9   =>  card::Value::Jack,
-                    10  =>  card::Value::Queen,
-                    11  =>  card::Value::King,
-                    12  =>  card::Value::Ace,
-                    _   =>  card::Value::None
+                let rank = match rank {
+                    0   =>  card::Rank::Two,
+                    1   =>  card::Rank::Three,
+                    2   =>  card::Rank::Four,
+                    3   =>  card::Rank::Five,
+                    4   =>  card::Rank::Six,
+                    5   =>  card::Rank::Seven,
+                    6   =>  card::Rank::Eight,
+                    7   =>  card::Rank::Nine,
+                    8   =>  card::Rank::Ten,
+                    9   =>  card::Rank::Jack,
+                    10  =>  card::Rank::Queen,
+                    11  =>  card::Rank::King,
+                    12  =>  card::Rank::Ace,
+                    _   =>  card::Rank::None
                 };
                 let suit = match suit {
                     0   =>  card::Suit::Diamonds,
@@ -39,7 +39,7 @@ impl Deck {
                     _   =>  card::Suit::None
                 };
                 cards.push(card::Card {
-                    value: value,
+                    rank: rank,
                     suit: suit
                 });
             }

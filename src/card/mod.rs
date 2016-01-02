@@ -4,19 +4,19 @@ mod tests;
 
 #[derive(Debug, PartialEq)]
 pub struct Card {
-    pub value: Value,
+    pub rank: Rank,
     pub suit: Suit
 }
 
 impl fmt::Display for Card {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}{}", self.value, self.suit)
+        write!(f, "{}{}", self.rank, self.suit)
     }
 }
 
 impl cmp::Ord for Card {
     fn cmp(&self, other: &Card) -> cmp::Ordering {
-        self.value.cmp(&other.value)
+        self.rank.cmp(&other.rank)
     }
 }
 
@@ -24,21 +24,21 @@ impl cmp::Eq for Card { }
 
 impl cmp::PartialOrd for Card {
     fn partial_cmp(&self, other: &Card) -> Option<cmp::Ordering> {
-        self.value.partial_cmp(&other.value)
+        self.rank.partial_cmp(&other.rank)
     }
 }
 
 impl Card {
-    pub fn new(value: Value, suit: Suit) -> Card {
+    pub fn new(rank: Rank, suit: Suit) -> Card {
         Card {
-            value: value,
+            rank: rank,
             suit: suit
         }
     }
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
-pub enum Value {
+pub enum Rank {
     None    =   0,
     Two     =   2,
     Three   =   3,
@@ -55,24 +55,23 @@ pub enum Value {
     Ace     =   14
 }
 
-impl fmt::Display for Value {
+impl fmt::Display for Rank {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let value = match *self {
-            Value::AceLow   =>  "1",
-            Value::Two      =>  "2",
-            Value::Three    =>  "3",
-            Value::Four     =>  "4",
-            Value::Five     =>  "5",
-            Value::Six      =>  "6",
-            Value::Seven    =>  "7",
-            Value::Eight    =>  "8",
-            Value::Nine     =>  "9",
-            Value::Ten      =>  "T",
-            Value::Jack     =>  "J",
-            Value::Queen    =>  "Q",
-            Value::King     =>  "K",
-            Value::Ace      =>  "A",
-            Value::None     =>  "-"
+            Rank::Two      =>  "2",
+            Rank::Three    =>  "3",
+            Rank::Four     =>  "4",
+            Rank::Five     =>  "5",
+            Rank::Six      =>  "6",
+            Rank::Seven    =>  "7",
+            Rank::Eight    =>  "8",
+            Rank::Nine     =>  "9",
+            Rank::Ten      =>  "T",
+            Rank::Jack     =>  "J",
+            Rank::Queen    =>  "Q",
+            Rank::King     =>  "K",
+            Rank::Ace      =>  "A",
+            Rank::None     =>  "-"
         };
         write!(f, "{}", value)
     }
