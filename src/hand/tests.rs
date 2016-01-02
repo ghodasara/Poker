@@ -15,11 +15,11 @@ fn create_hand() {
 
 #[test]
 fn has_flush() {
-    let a = card::Card::new(card::Value::Three, card::Suit::Hearts);
-    let b = card::Card::new(card::Value::Six, card::Suit::Hearts);
-    let c = card::Card::new(card::Value::Ten, card::Suit::Hearts);
-    let d = card::Card::new(card::Value::Queen, card::Suit::Hearts);
-    let e = card::Card::new(card::Value::Two, card::Suit::Hearts);
+    let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Six, card::Suit::Hearts);
+    let c = card::Card::new(card::Rank::Ten, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Queen, card::Suit::Hearts);
+    let e = card::Card::new(card::Rank::Two, card::Suit::Hearts);
     let cards: Vec<card::Card> = vec![a, b, c, d, e];
     let hand: hand::Hand = hand::Hand::new(cards);
 
@@ -28,11 +28,11 @@ fn has_flush() {
 
 #[test]
 fn no_flush() {
-    let a = card::Card::new(card::Value::Three, card::Suit::Hearts);
-    let b = card::Card::new(card::Value::Six, card::Suit::Spades);
-    let c = card::Card::new(card::Value::Ten, card::Suit::Hearts);
-    let d = card::Card::new(card::Value::Queen, card::Suit::Hearts);
-    let e = card::Card::new(card::Value::Two, card::Suit::Hearts);
+    let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Six, card::Suit::Spades);
+    let c = card::Card::new(card::Rank::Ten, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Queen, card::Suit::Hearts);
+    let e = card::Card::new(card::Rank::Two, card::Suit::Hearts);
     let cards: Vec<card::Card> = vec![a, b, c, d, e];
     let hand: hand::Hand = hand::Hand::new(cards);
 

@@ -5,22 +5,22 @@ use ::card;
 
 #[test]
 fn create_card() {
-    let value: card::Value = card::Value::Queen;
+    let rank: card::Rank = card::Rank::Queen;
     let suit: card::Suit = card::Suit::Clubs;
-    let card = card::Card::new(value, suit);
+    let card = card::Card::new(rank, suit);
 
-    assert_eq!(card.value, value);
+    assert_eq!(card.rank, rank);
     assert_eq!(card.suit, suit);
 }
 
 #[test]
 fn card_cmp_less() {
     let lesser = card::Card {
-        value: card::Value::Five,
+        rank: card::Rank::Five,
         suit: card::Suit::Hearts
     };
     let greater = card::Card {
-        value: card::Value::Six,
+        rank: card::Rank::Six,
         suit: card::Suit::Spades
     };
 
@@ -30,11 +30,11 @@ fn card_cmp_less() {
 #[test]
 fn card_cmp_greater() {
     let lesser = card::Card {
-        value: card::Value::Five,
+        rank: card::Rank::Five,
         suit: card::Suit::Hearts
     };
     let greater = card::Card {
-        value: card::Value::Six,
+        rank: card::Rank::Six,
         suit: card::Suit::Spades
     };
 
@@ -44,11 +44,11 @@ fn card_cmp_greater() {
 #[test]
 fn card_cmp_equal() {
     let heart_card = card::Card {
-        value: card::Value::Five,
+        rank: card::Rank::Five,
         suit: card::Suit::Hearts
     };
     let spade_card = card::Card {
-        value: card::Value::Five,
+        rank: card::Rank::Five,
         suit: card::Suit::Spades
     };
 
