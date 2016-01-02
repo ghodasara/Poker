@@ -40,7 +40,6 @@ impl Card {
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub enum Value {
     None    =   0,
-    AceLow  =   1,
     Two     =   2,
     Three   =   3,
     Four    =   4,
