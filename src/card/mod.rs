@@ -35,6 +35,10 @@ impl Card {
             suit: suit
         }
     }
+
+    pub fn get_id(&self) -> u8 {
+        ((self.suit as u32) * 13 + (self.rank as u32)) as u8
+    }
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Eq, Ord)]

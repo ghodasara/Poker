@@ -54,3 +54,14 @@ fn card_cmp_equal() {
 
     assert_eq!(heart_card.partial_cmp(&spade_card).unwrap(), cmp::Ordering::Equal);
 }
+
+#[test]
+fn card_id() {
+    let two_spades = card::Card {
+        rank: card::Rank::Two,
+        suit: card::Suit::Spades
+    };
+    let id: u8 = 39;
+
+    assert_eq!(two_spades.get_id(), id);
+}
