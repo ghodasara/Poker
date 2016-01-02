@@ -6,7 +6,6 @@ mod tests;
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Hand {
     pub cards: Vec<card::Card>,
-    //pub ranking: PokerRanking
 }
 
 impl Hand {
