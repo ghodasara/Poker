@@ -61,7 +61,27 @@ fn card_id() {
         rank: card::Rank::Two,
         suit: card::Suit::Spades
     };
-    let id: u8 = 39;
+    let id: i64 = 39;
 
     assert_eq!(two_spades.get_id(), id);
+}
+
+#[test]
+fn suit_mask() {
+    let two_clubs = card::Card {
+        rank: card::Rank::Two,
+        suit: card::Suit::Clubs
+    };
+    let ace_clubs = card::Card {
+        rank: card::Rank::Ace,
+        suit: card::Suit::Clubs
+    };
+    let five_spades = card::Card {
+        rank: card::Rank::Five,
+        suit: card::Suit::Spades
+    };
+
+    assert_eq!(-card::Suit::get_suit_mask(card::Suit::Clubs) & two_clubs.get_id(), 0);
+    assert_eq!(-card::Suit::get_suit_mask(card::Suit::Clubs) & ace_clubs.get_id(), 0);
+    assert!(-card::Suit::get_suit_mask(card::Suit::Clubs) & five_spades.get_id() != 0);
 }

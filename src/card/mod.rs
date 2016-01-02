@@ -36,8 +36,8 @@ impl Card {
         }
     }
 
-    pub fn get_id(&self) -> u8 {
-        ((self.suit as u32) * 13 + (self.rank as u32)) as u8
+    pub fn get_id(&self) -> i64 {
+        ((self.suit as u32) * 13 + (self.rank as u32)) as i64
     }
 }
 
@@ -96,5 +96,11 @@ impl fmt::Display for Suit {
             Suit::Spades    =>  "♠"
         };
         write!(f, "{}", suit)
+    }
+}
+
+impl Suit {
+    pub fn get_suit_mask(suit: Suit) -> i64 {
+        (0b1111111111111 << (suit as u32)) as i64
     }
 }
