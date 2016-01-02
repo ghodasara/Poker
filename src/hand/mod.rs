@@ -19,9 +19,9 @@ impl Hand {
     }
 
     fn has_flush(&self) -> bool {
-        let mut suits = 0b0000;
+        let mut suits = 0;
         for card in &self.cards {
-            suits = suits | (0b0001 << card.suit as u32);
+            suits = suits | (1 << card.suit as u32);
         }
         match suits {
             0b0001 => true,
@@ -33,9 +33,9 @@ impl Hand {
     }
 
     fn has_straight(&self) -> bool {
-        let mut ranks = 0b0;
+        let mut ranks = 0;
         for card in &self.cards {
-            ranks = ranks | (0b1 << card.rank as u32);
+            ranks = ranks | (1 << card.rank as u32);
         }
 
         let straight_matcher = 0b11111;
