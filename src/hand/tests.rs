@@ -40,6 +40,32 @@ fn no_flush() {
 }
 
 #[test]
+fn has_straight() {
+    let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Six, card::Suit::Diamonds);
+    let c = card::Card::new(card::Rank::Four, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Seven, card::Suit::Clubs);
+    let e = card::Card::new(card::Rank::Five, card::Suit::Spades);
+    let cards: Vec<card::Card> = vec![a, b, c, d, e];
+    let hand: hand::Hand = hand::Hand::new(cards);
+
+    assert_eq!(hand.has_straight(), true);
+}
+
+#[test]
+fn no_straight() {
+    let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Six, card::Suit::Diamonds);
+    let c = card::Card::new(card::Rank::King, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Seven, card::Suit::Clubs);
+    let e = card::Card::new(card::Rank::Five, card::Suit::Spades);
+    let cards: Vec<card::Card> = vec![a, b, c, d, e];
+    let hand: hand::Hand = hand::Hand::new(cards);
+
+    assert_eq!(hand.has_straight(), false);
+}
+
+#[test]
 fn high_card_raw_value() {
     assert_eq!(hand::PokerRanking::HighCard as u32, 0);
 }

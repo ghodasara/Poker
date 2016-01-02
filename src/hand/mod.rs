@@ -23,7 +23,6 @@ impl Hand {
         for card in &self.cards {
             suits = suits | (0b0001 << card.suit as u32);
         }
-        println!("{}", suits);
         match suits {
             0b0001 => true,
             0b0010 => true,
@@ -33,9 +32,20 @@ impl Hand {
         }
     }
 
-    // fn has_straight(&self) -> bool {
-    //
-    // }
+    fn has_straight(&self) -> bool {
+        let mut ranks = 0b0;
+        for card in &self.cards {
+            ranks = ranks | (0b1 << card.rank as u32);
+        }
+
+        let matcher = 0b11111;
+        for i in 0..8 {
+            if ranks ^ (matcher << i) == 0 {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 impl fmt::Display for Hand {
