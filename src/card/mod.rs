@@ -101,6 +101,6 @@ impl fmt::Display for Suit {
 
 impl Suit {
     pub fn get_suit_mask(suit: Suit) -> i64 {
-        (0b1111111111111 << (suit as u32)) as i64
+        (0b1111111111111 << (suit as i64)) as i64
     }
 }
