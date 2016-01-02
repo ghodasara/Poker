@@ -40,8 +40,11 @@ impl Hand {
 
         let straight_matcher = 0b11111;
         let ace_low_matcher = 0b1000000001111;
+        if ranks ^ ace_low_matcher == 0 {
+            return true;
+        }
         for i in 0..8 {
-            if ranks ^ (straight_matcher << i) == 0 || ranks ^ ace_low_matcher == 0 {
+            if ranks ^ (straight_matcher << i) == 0 {
                 return true;
             }
         }
