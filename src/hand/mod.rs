@@ -5,15 +5,14 @@ mod tests;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Hand {
-    pub cards: Vec<card::Card>,
+    pub cards: Vec<card::Card>
 }
 
 impl Hand {
     pub fn new(mut cards: Vec<card::Card>) -> Hand {
         cards.sort();
         Hand {
-            cards: cards,
-
+            cards: cards
         }
     }
 
