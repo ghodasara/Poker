@@ -56,14 +56,14 @@ fn card_cmp_equal() {
 }
 
 #[test]
-fn card_id() {
+fn card_mask() {
     let two_spades = card::Card {
         rank: card::Rank::Two,
         suit: card::Suit::Spades
     };
     let id: i64 = 0b0000000000001000000000000000000000000000000000000000;
 
-    assert_eq!(two_spades.get_id(), id);
+    assert_eq!(two_spades.get_mask(), id);
 }
 
 #[test]

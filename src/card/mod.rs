@@ -36,7 +36,7 @@ impl Card {
         }
     }
 
-    pub fn get_id(&self) -> i64 {
+    pub fn get_mask(&self) -> i64 {
         ((1 as i64) << ((self.suit as i64) * 13 + (self.rank as i64))) as i64
     }
 }
