@@ -18,7 +18,7 @@ impl Hand {
     }
 
     fn has_flush(&self) -> bool {
-        let suit_mask = card::Suit::get_suit_mask(self.cards.first().unwrap().suit);
+        let suit_mask: i64 = card::Suit::get_suit_mask(self.cards.first().unwrap().suit);
         for card in &self.cards[1..] {
             if (-suit_mask) & card.get_mask() != 0 {
                 return false;
@@ -28,13 +28,13 @@ impl Hand {
     }
 
     fn has_straight(&self) -> bool {
-        let mut ranks = 0;
+        let mut ranks: i64 = 0;
         for card in &self.cards {
-            ranks = ranks | (1 << card.rank as u32);
+            ranks |= 1 << card.rank as u32;
         }
 
-        let straight_matcher = 0b11111;
-        let ace_low_matcher = 0b1000000001111;
+        let straight_matcher: i64 = 0b11111;
+        let ace_low_matcher: i64 = 0b1000000001111;
         if ranks ^ ace_low_matcher == 0 {
             return true;
         }
