@@ -68,20 +68,13 @@ fn card_id() {
 
 #[test]
 fn suit_mask() {
-    let two_clubs = card::Card {
-        rank: card::Rank::Two,
-        suit: card::Suit::Clubs
-    };
-    let ace_clubs = card::Card {
-        rank: card::Rank::Ace,
-        suit: card::Suit::Clubs
-    };
-    let five_spades = card::Card {
-        rank: card::Rank::Five,
-        suit: card::Suit::Spades
-    };
+    let diamonds_mask: i64 = 0b1111111111111;
+    let clubs_mask: i64 = 0b11111111111110000000000000;
+    let hearts_mask: i64 = 0b111111111111100000000000000000000000000;
+    let spades_mask: i64 = 0b1111111111111000000000000000000000000000000000000000;
 
-    assert_eq!(-card::Suit::get_suit_mask(card::Suit::Clubs) & two_clubs.get_id(), 0);
-    assert_eq!(-card::Suit::get_suit_mask(card::Suit::Clubs) & ace_clubs.get_id(), 0);
-    assert!(-card::Suit::get_suit_mask(card::Suit::Clubs) & five_spades.get_id() != 0);
+    assert_eq!(card::Suit::get_suit_mask(card::Suit::Diamonds), diamonds_mask);
+    assert_eq!(card::Suit::get_suit_mask(card::Suit::Clubs), clubs_mask);
+    assert_eq!(card::Suit::get_suit_mask(card::Suit::Hearts), hearts_mask);
+    assert_eq!(card::Suit::get_suit_mask(card::Suit::Spades), spades_mask);
 }
