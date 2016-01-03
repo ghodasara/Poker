@@ -28,11 +28,7 @@ impl Hand {
     }
 
     fn has_straight(&self) -> bool {
-        let mut ranks: i64 = 0;
-        for card in &self.cards {
-            ranks |= 1 << card.rank as u32;
-        }
-
+        let ranks: i64 = self.get_ranks_mask();
         let straight_matcher: i64 = 0b11111;
         let ace_low_matcher: i64 = 0b1000000001111;
         if ranks ^ ace_low_matcher == 0 {
@@ -44,6 +40,14 @@ impl Hand {
             }
         }
         false
+    }
+
+    fn get_ranks_mask(&self) -> i64 {
+        let mut ranks: i64 = 0;
+        for card in &self.cards {
+            ranks |= 1 << card.rank as u32;
+        }
+        ranks
     }
 }
 
