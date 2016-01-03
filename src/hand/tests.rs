@@ -92,6 +92,19 @@ fn has_pair() {
 }
 
 #[test]
+fn has_pair_in_set() {
+    let a = card::Card::new(card::Rank::Seven, card::Suit::Hearts);
+    let b = card::Card::new(card::Rank::Six, card::Suit::Diamonds);
+    let c = card::Card::new(card::Rank::King, card::Suit::Hearts);
+    let d = card::Card::new(card::Rank::Seven, card::Suit::Clubs);
+    let e = card::Card::new(card::Rank::Seven, card::Suit::Spades);
+    let cards: Vec<card::Card> = vec![a, b, c, d, e];
+    let hand: hand::Hand = hand::Hand::new(cards);
+
+    assert_eq!(hand.has_pair(), true);
+}
+
+#[test]
 fn no_pair() {
     let a = card::Card::new(card::Rank::Three, card::Suit::Hearts);
     let b = card::Card::new(card::Rank::Six, card::Suit::Diamonds);
