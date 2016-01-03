@@ -78,6 +78,17 @@ fn card_rank_mask() {
 }
 
 #[test]
+fn card_suit_mask() {
+    let eight_hearts = card::Card {
+        rank: card::Rank::Eight,
+        suit: card::Suit::Hearts
+    };
+    let suit_mask: i64 = 0b0100;
+
+    assert_eq!(eight_hearts.get_suit_mask(), suit_mask);
+}
+
+#[test]
 fn suit_mask() {
     let diamonds_mask: i64 = 0b1111111111111;
     let clubs_mask: i64 = 0b11111111111110000000000000;
