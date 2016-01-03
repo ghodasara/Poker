@@ -30,7 +30,7 @@ impl Hand {
     fn has_straight(&self) -> bool {
         let mut ranks: i64 = 0;
         for card in &self.cards {
-            ranks |= 1 << card.rank as i64;
+            ranks |= card.get_rank_mask();
         }
 
         let straight_matcher: i64 = 0b11111;
@@ -47,12 +47,12 @@ impl Hand {
     }
 
     fn has_pair(&self) -> bool {
-        let mut ranks: i64 = 1 << self.cards.first().unwrap().rank as i64;
+        let mut ranks: i64 = self.cards.first().unwrap().get_rank_mask();
         for card in &self.cards[1..] {
-            if ranks | (1 << card.rank as i64) == ranks {
+            if ranks | card.get_rank_mask() == ranks {
                 return true
             }
-            ranks |= (1 << card.rank as i64);
+            ranks |= card.get_rank_mask();
         }
         false
     }
