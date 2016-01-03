@@ -18,17 +18,13 @@ impl Hand {
     }
 
     fn has_flush(&self) -> bool {
-        let mut suits = 0;
-        for card in &self.cards {
-            suits = suits | (1 << card.suit as u32);
+        let suit_mask = card::Suit::get_suit_mask(self.cards.first().unwrap().suit);
+        for card in &self.cards[1..] {
+            if (-suit_mask) & card.get_mask() != 0 {
+                return false;
+            }
         }
-        match suits {
-            0b0001 => true,
-            0b0010 => true,
-            0b0100 => true,
-            0b1000 => true,
-            _ => false
-        }
+        true
     }
 
     fn has_straight(&self) -> bool {
