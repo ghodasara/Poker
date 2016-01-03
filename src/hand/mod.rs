@@ -18,9 +18,9 @@ impl Hand {
     }
 
     fn has_flush(&self) -> bool {
-        let suit_mask: i64 = card::Suit::get_suit_mask(self.cards.first().unwrap().suit);
+        let suits: i64 = self.cards.first().unwrap().get_suit_mask();
         for card in &self.cards[1..] {
-            if (-suit_mask) & card.get_mask() != 0 {
+            if suits | card.get_suit_mask() != suits {
                 return false;
             }
         }
